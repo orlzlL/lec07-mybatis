@@ -10,4 +10,9 @@ public class MenuDAO {
 
         return sqlSession.selectList("MenuMapper.selectAllMenus");
     }
+
+    public MenuDTO selectMenuByMenuCode(SqlSession sqlSession, int menuCode) {
+
+        return sqlSession.selectOne("MenuMapper.selectMenu", menuCode);
+    }
 }

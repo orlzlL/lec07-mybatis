@@ -21,4 +21,14 @@
               , ORDERABLE_STATUS
         FROM tbl_menu
     </select>
+    <select id="selectMenu" resultMap="menuResultMap" parameterType="_int">
+        SELECT
+                MENU_CODE
+              , MENU_NAME
+              , MENU_PRICE
+              , CATEGORY_CODE
+              , ORDERABLE_STATUS
+        FROM tbl_menu
+       WHERE MENU_CODE = #{menuCode}
+    </select>
 </mapper>
