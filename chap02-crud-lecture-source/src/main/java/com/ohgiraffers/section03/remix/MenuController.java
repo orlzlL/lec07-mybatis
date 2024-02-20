@@ -1,34 +1,35 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section03.remix;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
 public class MenuController {
 
     private final MenuService menuService;
-    private final PrintResult printResult;      // 결과 페이지에 해당하는(View 개념의) 클래스
+    private final PrintResult printResult;
 
     public MenuController() {
-        menuService = new MenuService();
-        printResult = new PrintResult();
+        this.menuService = new MenuService();
+        this.printResult = new PrintResult();
     }
 
-    public void findAllMenus() {
-        
-        List<MenuDTO> menuList = menuService.findAllMenus();
+    public void findAllMenu() {
 
-        if(!menuList.isEmpty()) {
-            printResult.printMenus(menuList);
+        List<MenuDTO> menus = menuService.findAllMenu();
+
+        if(!menus.isEmpty()) {
+            printResult.printMenus(menus);
         } else {
-            printResult.printErrorMessage("조회할 메뉴가 없습니다.");
+            printResult.printErrorMessage("전체 메뉴 조회 실패!");
         }
     }
 
-    public void findMenuByMenuCode(Map<String, String> parameter) {
+    public void findMenuBy(Map<String, String> parameter) {
 
         int menuCode = Integer.valueOf(parameter.get("menuCode"));
 
-        MenuDTO menu = menuService.findMenuByMenuCode(menuCode);
+        MenuDTO menu = menuService.findMenuBy(menuCode);
 
         if(menu != null) {
             printResult.printMenu(menu);
@@ -38,21 +39,21 @@ public class MenuController {
     }
 
     public void registMenu(Map<String, String> parameter) {
-        String menuName = parameter.get("menuName");
-        int menuPrice = Integer.valueOf(parameter.get("menuPrice"));
-        int categoryCode = Integer.valueOf(parameter.get("categoryCode"));
+            String menuName = parameter.get("menuName");
+            int menuPrice = Integer.valueOf(parameter.get("menuPrice"));
+            int categoryCode = Integer.valueOf(parameter.get("categoryCode"));
 
-        MenuDTO menu = new MenuDTO();
-        menu.setMenuName(menuName);
-        menu.setMenuPrice(menuPrice);
-        menu.setCategoryCode(categoryCode);
+            MenuDTO menu = new MenuDTO();
+            menu.setMenuName(menuName);
+            menu.setMenuPrice(menuPrice);
+            menu.setCategoryCode(categoryCode);
 
-        if(menuService.registMenu(menu)) {
-            printResult.printSuccessMessage("regist");
-        } else {
-            printResult.printErrorMessage("메뉴 추가 실패!");
+            if(menuService.registMenu(menu)) {
+                printResult.printSuccessMessage("regist");
+            } else {
+                printResult.printErrorMessage("메뉴 추가 실패!");
+            }
         }
-    }
 
     public void modifyMenu(Map<String, String> parameter) {
         int menuCode = Integer.valueOf(parameter.get("menuCode"));
@@ -80,12 +81,3 @@ public class MenuController {
         }
     }
 }
-
-
-
-
-
-
-
-
-

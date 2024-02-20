@@ -12,8 +12,8 @@ public class Template {
 
     private static SqlSessionFactory sqlSessionFactory;
 
-    public static SqlSession getSqlSession(){
-        if(sqlSessionFactory == null){
+    public static SqlSession getSqlSession() {
+        if(sqlSessionFactory == null) {
             String resource = "com/ohgiraffers/section01/xmlconfig/mybatis-config.xml";
             try {
                 InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -22,6 +22,7 @@ public class Template {
                 throw new RuntimeException(e);
             }
         }
+
         return sqlSessionFactory.openSession(false);
     }
 }
