@@ -15,4 +15,8 @@ public class MenuDAO {
 
         return sqlSession.selectOne("MenuMapper.selectMenu", menuCode);
     }
+
+    public int insertMenu(SqlSession sqlSession, MenuDTO menu) {
+        return sqlSession.insert("MenuMapper.insertMenu", menu);
+    }
 }

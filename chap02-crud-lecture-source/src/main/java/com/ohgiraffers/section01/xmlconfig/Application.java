@@ -30,7 +30,7 @@ public class Application {
                     menuController.findMenuByMenuCode(inputMenuCode());
                     break;
                 case 3:
-//                    menuController.registMenu(inputMenu());
+                    menuController.registMenu(inputMenu());
                     break;
                 case 4: break;
                 case 5: break;
