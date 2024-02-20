@@ -2,8 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
-    <select id="selectAllMenus">
+<mapper namespace="MenuMapper">
+
+    <resultMap type="com.ohgiraffers.section01.xmlconfig.MenuDTO" id="menuResultMap">
+        <id property="menuCode" column="MENU_CODE"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuPrice" column="MENU_PRICE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllMenus" resultMap="menuResultMap">
         SELECT
                 MENU_CODE
               , MENU_NAME

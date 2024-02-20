@@ -14,6 +14,11 @@ public class MenuController {
 
     public void findAllMenus() {
         List<MenuDTO> menuList = menuService.findAllMenus();
-        System.out.println("menuList = " + menuList);
+
+        if(!menuList.isEmpty()){
+            printResult.printMenus(menuList);
+        }else{
+            printResult.printErrorMessage("조회할 메뉴가 없습니다.");
+        }
     }
 }
