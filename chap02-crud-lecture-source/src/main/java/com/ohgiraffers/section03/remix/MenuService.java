@@ -81,7 +81,7 @@ public class MenuService {
     public boolean removeMenu(int menuCode) {
         SqlSession sqlSession = getSqlSession();
 
-                MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
         int result = menuMapper.deleteMenu(menuCode);
 
         if(result > 0) {
