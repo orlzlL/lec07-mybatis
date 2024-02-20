@@ -32,8 +32,12 @@ public class Application {
                 case 3:
                     menuController.registMenu(inputMenu());
                     break;
-                case 4: break;
-                case 5: break;
+                case 4:
+                    menuController.modifyMenu(inputModifyMenu());
+                    break;
+                case 5:
+                    menuController.removemenu(inputMenuCode());
+                    break;
                 case 9:
                     System.out.println("프로그램을 종료합니다.");
                     return;
@@ -43,8 +47,6 @@ public class Application {
             }
         } while(true);
     }
-
-
 
     /* 설명. 사용자의 입력 값을 Map 형태로 반환(web에서는 key와 value 형태로 request 객체에 담기는 parameter로 생각) */
     private static Map<String, String> inputMenuCode(){
@@ -62,9 +64,9 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         System.out.println("신규 메뉴의 이름을 입력해 주세요: ");
         String menuName = sc.nextLine();
-        System.out.println("메뉴 가격을 입력해 주세요: ");
+        System.out.println("신규 메뉴의 가격을 입력해 주세요: ");
         String menuPrice = sc.nextLine();
-        System.out.println("카테고리 코드를 입력해 주세요: ");
+        System.out.println("신규 메뉴의 카테고리 코드를 입력해 주세요: ");
         String categoryCode = sc.nextLine();
 
         Map<String, String> paramter = new HashMap<>();
@@ -73,7 +75,23 @@ public class Application {
         paramter.put("categoryCode", categoryCode);
 
         return paramter;
-
     }
 
+    private static Map<String, String> inputModifyMenu(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("변경할 메뉴의 번호를 입력해 주세요: ");
+        String menuCode = sc.nextLine();
+        System.out.println("변경할 메뉴의 이름을 입력해 주세요: ");
+        String menuName = sc.nextLine();
+        System.out.println("변경할 메뉴의 가격을 입력해 주세요: ");
+        String menuPrice = sc.nextLine();
+
+
+        Map<String, String> paramter = new HashMap<>();
+        paramter.put("menuCode", menuCode);
+        paramter.put("menuName", menuName);
+        paramter.put("menuPrice", menuPrice);
+
+        return paramter;
+    }
 }
