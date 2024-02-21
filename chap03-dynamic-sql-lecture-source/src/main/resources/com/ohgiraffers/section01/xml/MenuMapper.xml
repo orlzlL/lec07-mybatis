@@ -97,7 +97,7 @@
             <when test="value == '음료'">
                 AND A.CATEGORY_CODE IN (8, 9, 19)
             </when>
-            <when test="value == '디저트">
+            <when test="value == '디저트'">
                 AND A.CATEGORY_CODE IN (11, 12)
             </when>
         </choose>
